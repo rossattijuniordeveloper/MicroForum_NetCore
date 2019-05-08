@@ -1,0 +1,19 @@
+
+-- thx@1138github
+
+https://github.com/rossattijuniordeveloper/Micro_Forum_WF.git
+https://github.com/rossattijuniordeveloper/MicroForum_Net.git
+https://github.com/rossattijuniordeveloper/MicroForum_NetCore.git
+
+
+git clone https://github.com/rossattijuniordeveloper/Micro_Forum_WF.git
+git config --global user.email "rossattijuniordeveloper@gmail"
+git config --global user.name "rossattijuniordeveloper"
+git init
+git remote add origin https://github.com/rossattijuniordeveloper/MicroForum_WF
+usuario: rossattijuniordeveloper senha:thx@1138github
+git push origin master
+git add .
+git commit -m "alguma explicação"
+
+
