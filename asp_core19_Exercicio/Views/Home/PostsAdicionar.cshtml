@@ -1,0 +1,28 @@
+﻿@model MicroForum_NetCore.Models.Posts
+@{
+    ViewData["SubTitle"] = "Adicionar Posts";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2 class="titulo">@ViewBag.SubTitle</h2>
+
+<div class="card bg-light p-5">
+    <form asp-controller="Home" asp-action="PostsGravar" asp-route-id="@Model">
+        <div class="form-group">
+            @Html.LabelFor(model => model.titulo)<br />
+            @Html.TextBoxFor(model => model.titulo)<br />
+            @Html.LabelFor(model => model.mensagem)<br />
+            @Html.TextAreaFor(model => model.mensagem)<br />
+        </div>
+        <a asp-controller="Home" asp-action="ListarPosts" class="btn btn-primary">Cancelar\Voltar</a>
+        <button class="btn btn-primary">Gravar</button>
+    </form>
+</div>
+<div>
+    <div class="row">
+        <a asp-controller="Home" asp-action="Index" class="btn btn-primary">Página Inicial</a>
+    </div>
+
+</div>
+

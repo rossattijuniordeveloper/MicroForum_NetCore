@@ -1,0 +1,54 @@
+﻿@model MicroForum_NetCore.Models.Produto
+@{
+    ViewData["SubTitle"] = "Validando a Inclusão do Produto";
+    //int id_Produto = Convert.ToUInt16(Model.Id_Produto);
+    string sNome = string.Empty;
+    int iPreco = 0;
+
+    // coletando Nome
+    if (Model.Nome == null)
+    {
+        sNome = string.Empty;
+    }
+    else
+    {
+        sNome = Model.Nome.ToString();
+    }
+    // coletando Morada
+    if (Model.Price == 0)
+    {
+        iPreco = 0;
+    }
+    else
+    {
+        iPreco = (int)Model.Price;
+    }
+    
+}
+
+<h2 class="titulo">@ViewBag.SubTitle</h2>
+<hr />
+<div class="card bg-light p-5">
+
+    @{
+
+        bool avancar = true;
+
+
+        if ( (sNome == string.Empty) ||(iPreco == 0) )
+        {
+            avancar = false;
+            <h1>ATENÇÃO !</h1><p>Preencha Corretamente TODOS os campos</p>            
+            <a asp-controller="Home" asp-action="ProdutoAdicionar" asp-route-id="@Model" class="btn btn-primary">Voltar</a>
+        }
+        if (avancar)
+        {
+            MicroForum_NetCore.Models.ProdutoDados.ProdutoAdicionar(Model);
+            <h3>ATENÇÃO !</h3><p>Produto Adicionado com SUCESSO!</p>
+            <a asp-controller="Home" asp-action="ProdutoListar" class="btn btn-primary">Voltar</a>
+        }
+    }
+
+</div>
+
+

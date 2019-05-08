@@ -1,0 +1,104 @@
+﻿@{
+    ViewData["Title"] = "Micro Fórum em ASP.NET Core 2.0 - MVC";
+    ViewData["user"] = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+    <!-- BootStrap -->
+    <!-- CSS-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link href="~/css/min.css" rel="stylesheet" />
+</head>
+
+
+
+<body class="bg-dark text-white">
+
+    <!-- Header-->
+    <div class="container-fluid bg-dark text-white pt-3 pb-3">
+        <h2>@ViewBag.Title</h2>
+
+        <!-- link -->
+        <div class="header_links">
+            @{
+                //if (ViewBag.user == null)
+                if(MicroForum_NetCore.Program._usuario_Logado=="")
+                {
+                    <div class="row">
+                        <a asp-controller="Home" asp-action="AdicionarConta" class="btn btn-primary">Criar Nova Conta  |</a>
+                        <a asp-controller="Home" asp-action="Login" class="btn btn-primary">Acessar Forum - LogIn </a>
+                    </div>
+                }
+                else
+                {
+                    <div class="row">                        
+                        <a asp-controller="Home" asp-action="ListarPosts" class="btn btn-primary">Listar Posts</a>
+                        <a asp-controller="Home" asp-action="PostsAdicionar" class="btn btn-primary">Novo Post</a>
+                        <a asp-controller="Home" asp-action="LogOut" class="btn btn-primary">Encerrar - LogOut</a>
+                        <p>  Olá , @MicroForum_NetCore.Program._usuario_Logado</p>
+
+                    </div>
+                    <!--
+            <p>
+                Olá,@ViewBag.user |
+                <a href="~/posts/ListarPosts.cshtml">Listar Posts </a> |
+                <a href="~/posts/NovoPost.cshtml"> Novo Post </a> |
+                <a href="~/LogOut.cshtml">Encerrar - LogOut</a>
+            </p>
+            -->
+                }
+            }
+        </div>
+
+
+    </div>
+        <!-- Body -->
+    <div class="container-fluid bg-white text-dark pt-3 pb-3">
+        <div class="container mt-5 mb-5">
+            @RenderBody()
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="container-fluid bg-dark text-white pt-3 pb-3 text-center">
+        ASP.NET Core 2.0 &copy; @DateTime.Now.Year
+    </div>
+
+    <!-- BootStrap -->
+    <!-- JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+</body>
+</html>
+
+
+<!-- Logotipo-->
+<!--
+
+
+    <div class="header_logotipo">
+        <a href="~/Index.cshtml">
+            <img src="~/images/logotipo.png" />
+        </a>
+    </div>
+
+                        <div class="col-5 text-center card bg-light p-5 m-3">
+                            <a asp-controller="Home" asp-action="CriarConta" class="btn btn-primary">Criar Nova Conta </a>
+                            <a asp-controller="Home" asp-action="Login" class="btn btn-primary">Acessar - LogIn </a>
+                        </div>
+
+                        <div class="col-5 text-center card bg-light p-5 m-3">
+                            <a asp-controller="Home" asp-action="Login" class="btn btn-primary">Acessar - LogIn </a>
+                        </div>
+
+-->

@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "LogOut";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>LogOut</h2>
+
+<div>
+    @{
+
+        bool usu = false;
+
+        if(MicroForum_NetCore.Program._usuario_Logado != "")
+        {
+            usu = true;
+            MicroForum_NetCore.Program._usuario_Logado = "";
+        }
+
+        if(usu)
+        {
+            <p> Tchau! @MicroForum_NetCore.Program._usuario_Logado, Até a próxima visita!</p>            
+
+            <a asp-controller="Home" asp-action="Login" class="btn btn-primary">Acessar - LogIn</a>
+            <a asp-controller="Home" asp-action="Index" class="btn btn-primary">Página Inicial</a>
+
+        }
+        else
+        {
+            <a asp-controller="Home" asp-action="Index" class="btn btn-primary">Página Inicial</a>
+        }
+    }
+</div>

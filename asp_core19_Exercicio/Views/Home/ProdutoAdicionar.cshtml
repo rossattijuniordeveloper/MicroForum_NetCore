@@ -1,0 +1,23 @@
+﻿@model MicroForum_NetCore.Models.Produto
+@{
+    ViewData["SubTitle"] = "Adicionar Produto";
+}
+
+<h2 class="titulo">@ViewBag.SubTitle</h2>
+
+<div class="card bg-light p-5">
+    <form asp-controller="Home" asp-action="ProdutoAdicionarGravar1" asp-route-id="@Model">
+        <div class="form-group">
+            @Html.LabelFor(model => model.Nome)<br />
+            @Html.TextBoxFor(model => model.Nome)<br />
+            @Html.LabelFor(model => model.Price)<br />
+            @Html.TextBoxFor(model => model.Price)<br />
+        </div>
+        <a asp-controller="Home" asp-action="ProdutoListar" class="btn btn-primary">Cancelar\Voltar</a>
+        <button class="btn btn-primary">Gravar</button>
+    </form>
+</div>
+<div>
+
+</div>
+

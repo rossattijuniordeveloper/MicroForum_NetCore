@@ -1,0 +1,54 @@
+﻿@model MicroForum_NetCore.Models.Usuario
+@{
+    //ViewData["Title"] = "LoginVerificar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="wrapper">
+    @{
+
+        // recupera os valores do formulario login
+        string usuario = Model.Nome; //Request["txtUsuario"];
+        string senha = Model.Senha_1; //Request["txtSenha"];
+        bool avancar = true;
+
+        if ((usuario == "") || (senha == ""))
+        {
+            <p>Preencha os campos corretamente.</p>
+            avancar = false;
+        }
+        if (avancar)
+        {
+            if (!MicroForum_NetCore.Models.Dados.PesquisarUsuario(usuario))
+            {
+                avancar = false;
+                <p>(usu)Dados do Usuário InVálidos, Tente novamente com Dados VÁLIDOS!</p>
+            }
+        }
+        if (avancar)
+        {
+
+            if (!MicroForum_NetCore.Models.Dados.VerificarSenha(usuario, senha))
+            {
+                avancar = false;
+                <p>(pass)Dados do Usuário Não Validos, Tente novamente com Dados VÁLIDOS!</p>
+            }
+            else
+            {
+                avancar = true;
+            }
+        }
+        if (avancar)
+        {
+            Model.Id_Usuario = MicroForum_NetCore.Models.Dados.RetornarIdUsuario(usuario);
+            <p>Seja bem Vindo ! @Model.Nome</p>
+            MicroForum_NetCore.Program._usuario_Logado = Model.Nome;            
+            <a asp-controller="Home" asp-action="Index" class="btn btn-primary">Voltar Página Inicial</a>
+        }
+        else
+        {
+            <a asp-controller="Home" asp-action="Login" class="btn btn-primary">Voltar Login</a>
+
+        }
+    }
+</div>

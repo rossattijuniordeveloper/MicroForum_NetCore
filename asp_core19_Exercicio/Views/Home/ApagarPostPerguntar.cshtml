@@ -1,0 +1,26 @@
+﻿@model int
+@{
+    ViewData["Title"] = "Apagar Post";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int _id_post = Convert.ToUInt16(Model);
+
+}
+<h2 class="titulo">@ViewBag.SubTitle</h2>
+<hr />
+<div class="card bg-light p-5">
+
+    @{
+
+        <h1>ATENÇÃO !</h1>
+        <p>Deseja Realmente APAGAR a Postagem ?  </p>
+        <div class="row">
+            <div class="text-left">
+                <a asp-controller="Home" asp-action="ApagarPost" asp-route-id="@_id_post" class="btn btn-primary">Sim! pode apagar</a>
+            </div><p>__</p>
+            <div class="text-right">
+                <a asp-controller="Home" asp-action="ListarPosts" class="btn btn-primary">Não apague, Volte!</a>
+            </div>
+        </div>
+    }
+
+</div>

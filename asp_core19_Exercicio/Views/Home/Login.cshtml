@@ -1,0 +1,42 @@
+﻿@model MicroForum_NetCore.Models.Usuario
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="titulo">LogIn - Acesso ao Forum</h2>
+<hr />
+
+<div class="wrapper">
+    @{
+        if(MicroForum_NetCore.Program._usuario_Logado != "")
+        {
+            <p>O usuário @MicroForum_NetCore.Program._usuario_Logado está ativo</p>
+            <p>Clique<a href="~/LogOut.cshtml"> AQUI </a>para sair da Sessão</p>
+            <div class="row">
+                <a asp-controller="Home" asp-action="LogOut" class="btn btn-primary">Sair - LogOut</a>
+                <a asp-controller="Home" asp-action="Index" class="btn btn-primary">Página Inicial</a>
+            </div>
+        }
+        else
+        {
+            <div class="card bg-light p-5">
+                <form asp-controller="Home" asp-action="LoginVerificar">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Nome)<br />
+                        @Html.TextBoxFor(model => model.Nome)<br />
+                        @Html.LabelFor(model => model.Senha_1)<br />                         
+                        @Html.TextBoxFor(model => model.Senha_1)<br />
+                    </div>
+                    <a asp-controller="Home" asp-action="Index" class="btn btn-primary">Cancelar\Voltar</a>
+                    <button class="btn btn-primary">Confirmar</button>
+                </form>
+            </div>
+        }
+    }
+    <div class="row">
+        <a asp-controller="Home" asp-action="Index" class="btn btn-primary">Página Inicial</a>
+    </div>
+
+
+</div>

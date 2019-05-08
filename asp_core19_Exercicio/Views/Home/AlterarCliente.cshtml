@@ -1,0 +1,28 @@
+﻿@model MicroForum_NetCore.Models.Cliente
+@{
+    ViewData["SubTitle"] = "Alterar Cliente "; //Model.Nome
+    int id = Model.Id_Cliente;
+}
+
+<h2 class="titulo">@ViewBag.SubTitle</h2>
+<hr />
+<div class="card bg-light p-5">
+    <form asp-controller="Home" asp-action="AlterarClienteGravar1" asp-route-id="@Model">
+         @Html.HiddenFor(model => model.Id_Cliente)
+        <div class="form-group">
+            @Html.LabelFor(model => model.Nome)<br />
+            @Html.EditorFor(model => model.Nome)<br />
+            @Html.LabelFor(model => model.Telefone)<br />
+            @Html.EditorFor(model => model.Telefone)<br />
+            @Html.LabelFor(model => model.Morada) <br />
+            @Html.EditorFor(model => model.Morada)<br />
+            @Html.LabelFor(model => model.Cep)<br />
+            @Html.EditorFor(model => model.Cep)<br />
+        </div>
+        <a asp-controller="Home" asp-action="ListarClientes" class="btn btn-primary">Cancelar\Voltar</a>
+        <button class="btn btn-primary">Gravar</button>
+    </form>
+
+</div>
+
+
